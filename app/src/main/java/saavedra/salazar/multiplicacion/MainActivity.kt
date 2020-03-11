@@ -1,6 +1,7 @@
 package saavedra.salazar.multiplicacion
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,13 +17,14 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
     //Variables globales
     var resultado = 0
-    val listaOperaciones = arrayOf("+","-","/","*")
+    val listaOperaciones = arrayOf("+","-","*")
     var operacionElegida = listaOperaciones.random()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         multiplicar()
+
         if (operacionElegida == "+"){
             btnVerificar.setOnClickListener{
 
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        if (operacionElegida == "/"){
+      /**  if (operacionElegida == "/"){
             btnVerificar.setOnClickListener{
 
                 if (etMulti.text.isNotEmpty()){
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     m("Ingrese una respuesta!!")
                 }
             }
-        }
+        }**/
         if (operacionElegida == "*"){
             btnVerificar.setOnClickListener{
 
@@ -77,9 +79,13 @@ class MainActivity : AppCompatActivity() {
                 if (etMulti.text.isNotEmpty()){
                     if (etMulti.getText().toString().toInt()==resultado){
                         m("Correcto!!")
+                        val miIntent = Intent(this, FelicitacionActivity::class.java)
+                        startActivity(miIntent)
 
                     }else{
                         m("Incorrecto!!")
+                        val miIntent2 = Intent(this, FallasteActivity::class.java)
+                        startActivity(miIntent2)
 
                     }
                     operacionNueva()
@@ -93,9 +99,13 @@ class MainActivity : AppCompatActivity() {
                 if (etMulti.text.isNotEmpty()){
                     if (etMulti.getText().toString().toInt()==resultado){
                         m("Correcto!!")
+                        val miIntent = Intent(this, FelicitacionActivity::class.java)
+                        startActivity(miIntent)
 
                     }else{
                         m("Incorrecto!!")
+                        val miIntent2 = Intent(this, FallasteActivity::class.java)
+                        startActivity(miIntent2)
 
                     }
                     operacionNueva()
@@ -104,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        if (operacionElegida == "/"){
+        /**if (operacionElegida == "/"){
             btnVerificar.setOnClickListener{
                 if (etMulti.text.isNotEmpty()){
                     if (etMulti.getText().toString().toInt()==resultado){
@@ -119,15 +129,19 @@ class MainActivity : AppCompatActivity() {
                     m("Ingrese una respuesta")
                 }
             }
-        }
+        }*/
         if (operacionElegida == "*"){
             btnVerificar.setOnClickListener{
                 if (etMulti.text.isNotEmpty()){
                     if (etMulti.getText().toString().toInt()==resultado){
                         m("Correcto!!")
+                        val miIntent = Intent(this, FelicitacionActivity::class.java)
+                        startActivity(miIntent)
 
                     }else{
                         m("Incorrecto!!")
+                        val miIntent2 = Intent(this, FallasteActivity::class.java)
+                        startActivity(miIntent2)
 
                     }
                     operacionNueva()
@@ -153,13 +167,13 @@ class MainActivity : AppCompatActivity() {
         resultado=num1+num2
         etMulti.text.clear()
     }
-    fun dividir(){
+   /** fun dividir(){
         val num1 = Random.nextInt(1,11)
         val num2 = Random.nextInt(1,11)
         tvMulti.text = "$num1 / $num2 = ?"
         resultado=num1/num2
         etMulti.text.clear()
-    }
+    }*/
     fun restar(){
         val num1 = Random.nextInt(1,11)
         val num2 = Random.nextInt(1,11)
@@ -175,15 +189,35 @@ class MainActivity : AppCompatActivity() {
         if (operacionElegida == "-"){
             restar()
         }
-        if (operacionElegida == "/"){
+        /*if (operacionElegida == "/"){
             dividir()
-        }
+        }*/
         if (operacionElegida == "*"){
             multiplicar()
         }
     }
-    private fun initUI() {
+   /** fun pantallaNueva(){
+        btnVerificar.setOnClickListener {
+            if (etMulti.text.isNotEmpty()){
+                if (etMulti.getText().toString().toInt()==resultado){
+                    val miIntent = Intent(this, FelicitacionActivity::class.java)
+                    startActivity(miIntent)
 
+                }else{
+                    val miIntent2 = Intent(this, FallasteActivity::class.java)
+                    startActivity(miIntent2)
+
+                }
+                operacionNueva()
+            }else{
+                m("Ingrese una respuesta")
+            }
+
+
+        }
+    }*/
+
+    private fun initUI() {
 
     }
 
